@@ -19,15 +19,10 @@ class Deck {
     return _.shuffle(cards)
   }
 
-  deal() {
-    const dealtCards = []
-
-    for(let i = 0; i < 4; i++){
-      dealtCards.push(this.cards.pop())
-    }
-
-    return dealtCards
-  }
+  // deal(){
+    
+  // }
+  
 
 }
 
