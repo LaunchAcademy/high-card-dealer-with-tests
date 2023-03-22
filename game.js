@@ -1,4 +1,3 @@
-import Card from './Card.js'
 import Deck from './Deck.js'
 import Hand from './Hand.js'
 
@@ -9,28 +8,29 @@ import Hand from './Hand.js'
 
 console.log(`GAME START\n`)
 
-let deck = new Deck()
+const deckOne = new Deck()
 
-console.log(`There are ${deck.cards.length} cards in the deck.\n`)
+console.log(`There are ${deckOne.cards.length} cards in the deck.\n`)
 
-const playerOneHand = new Hand(deck.deal())
-const playerTwoHand = new Hand(deck.deal())
+const cardsForPlayerOne = deckOne.deal()
+const cardsForPlayerTwo = deckOne.deal()
 
-console.log(`Player One was dealt: ${playerOneHand.printHand()}`)
-console.log(`Player Two was dealt: ${playerTwoHand.printHand()}`)
+const playerOne = new Hand(cardsForPlayerOne)
+const playerTwo = new Hand(cardsForPlayerTwo)
 
-const playerOneHandValue = playerOneHand.value()
-const playerTwoHandValue = playerTwoHand.value() 
+console.log(`Player 1 was dealt ${playerOne.printHand()}`)
+console.log(`Player 2 was dealt ${playerTwo.printHand()}`)
 
-console.log(`Player One's hand value is: ${playerOneHandValue}`)
-console.log(`Player Two's hand value is: ${playerTwoHandValue}`)
+console.log("\n")
 
-let gameSummary
-if (playerOneHandValue > playerTwoHandValue){
-  gameSummary = "Player One wins the game"
-} else if (playerOneHandValue < playerTwoHandValue){
-  gameSummary = "Player Two wins the game"
-} else if (playerOneHandValue === playerTwoHandValue) {
-  gameSummary = "It's a tie!"
+console.log(`Player 1's hand value: ${playerOne.totalHandValue()}`)
+console.log(`Player 2's hand value: ${playerTwo.totalHandValue()}`)
+
+if (playerOne.totalHandValue() > playerTwo.totalHandValue()) {
+  console.log("Player One wins the game!")
+} else if (playerOne.totalHandValue() < playerTwo.totalHandValue()) {
+  console.log("Player Two wins the game!")
+} else {
+  console.log("Tie!")
 }
-console.log(gameSummary)
+

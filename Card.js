@@ -2,24 +2,28 @@ class Card {
   constructor(rank, suit) {
     this.rank = rank
     this.suit = suit
+    this.value = this.value()
   }
 
-  value(){
-    if (this.rank === "J"){
+  value() {
+    if (this.rank === "J") {
       return 11
-    }
-    if (this.rank === "Q"){
+    } 
+
+    if (this.rank === "Q") {
       return 12
-    }
-    if (this.rank === "K"){
+    } 
+
+    if (this.rank === "K") {
       return 13
-    }
-    if (this.rank === "A"){
+    } 
+
+    if (this.rank === "A") {
       return 14
-    }
+    }  
+    
     return this.rank
   }
- 
 }
 
 export default Card

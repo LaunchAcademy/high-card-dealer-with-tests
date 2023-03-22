@@ -20,15 +20,14 @@ class Deck {
   }
 
   deal(){
-    const dealtCards = []
+    let arrayOfCardsToDeal = []
 
-    for(let i = 0; i < 4; i++){
-      dealtCards.push(this.cards.pop())
+      arrayOfCardsToDeal.push(this.cards.pop())
     }
 
-    return dealtCards
+    return arrayOfCardsToDeal
+    // return this.cards.splice(-4)
   }
-  
 
 }
 

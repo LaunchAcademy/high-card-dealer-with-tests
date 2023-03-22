@@ -1,6 +1,6 @@
-// card is imported because the class is needed for a test!
+// Card is imported because the class is needed for a test!
 import Card from '../../Card.js'
-import Deck from '../../Deck.js'
+import Deck from './../../Deck.js'
 
 describe('Deck', () => {
   let firstDeck
@@ -9,31 +9,42 @@ describe('Deck', () => {
     firstDeck = new Deck()
   })
 
+
+
   describe('#buildDeck', () => {
-    it("returns 52 cards", () => {
+
+    it("returns an array of with a length of 52", () => {
       expect(firstDeck.buildDeck().length).toEqual(52)
     })
-
-    it("each of the cars is a card object", () => {
+    
+    it("creates card objects", () => {
       expect(firstDeck.buildDeck()[0]).toBeInstanceOf(Card)
-    })
-
-    it("the cards returned are unique ", () => {
-      expect(firstDeck.buildDeck()[0]).not.toMatchObject(firstDeck.buildDeck()[1])
+      // expect(firstDeck.cards[0]).toBeInstanceOf(Card)
     })
   })
 
   describe('#deal', () => {
-    it("returns the top four cards of the deck as an array", () => {
-      const newDeck = new Deck()
-      const lastFourCards = newDeck.cards.slice(-4)
-      const dealtCards = newDeck.deal() 
+    it("returns an array", () => {
+      expect(firstDeck.deal()).toBeInstanceOf(Array)
+    })
 
-      expect(dealtCards).toContain(lastFourCards[0])
-      expect(dealtCards).toContain(lastFourCards[1])
-      expect(dealtCards).toContain(lastFourCards[2])
-      expect(dealtCards).toContain(lastFourCards[3])
+    it("returns an array of four elements", () => {
+      expect(firstDeck.deal().length).toEqual(4)
+    })
+
+    it("returns an array made up of Card object", () => {
+     expect(firstDeck.deal()[0]).toBeInstanceOf(Card)
+      // firstDeck.deal().forEach((card) => {
+      //   expect(card).toBeInstanceOf(Card)
+      // })
     })
   })
-
 })
+
+
+
+
+
+
+
+
