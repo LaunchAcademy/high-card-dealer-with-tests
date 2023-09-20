@@ -3,8 +3,39 @@ import Card from '../../Card.js'
 // const suits = ['♦', '♣', '♠', '♥']
 
 describe('Card', () => {
+  let twoCard
+  let aceCard 
 
+  beforeEach(() => {
+    twoCard = new Card(2, '♦')
+    aceCard = new Card("A", '♦')
+  })
 
+  describe('when a new Card is created', () => {
+    it("returns the rank of the card when accessed", () => {
+      expect(twoCard.rank).toEqual(2)
+    })
+
+    it("returns the suit of a card when accessed ", () => {
+      expect(twoCard.suit).toEqual('♦')
+    })
+  })
+
+  describe("#printSummary", () => {
+    it("returns a string summary with the rank and suit", () => {
+      expect(twoCard.printSummary()).toEqual("2♦")
+    })
+  })
+
+  describe("#value", () => {
+    it("returns the computed value for a number card", () => {
+      expect(twoCard.value()).toEqual(2)
+    })
+
+    it("returns the computed value for a number card", () => {
+      expect(aceCard.value()).toEqual(14)
+    })
+  })
 })
 
 
@@ -49,25 +80,4 @@ describe('Card', () => {
 
 
 
-  // describe('a card is instantiated with the correct readable properties', () => {
-  //   it("returns the rank of the card when accessed", () => {
-  //     expect(twoCard.rank).toEqual(2)
-  //   })
 
-  //   it("returns the suit of a card when accessed ", () => {
-  //     expect(twoCard.suit).toEqual('♦')
-  //   })
-  // })
-  // we don't need to test an ace, because we can fairly assume that it would not have any different functionality
-
-  // describe('#value', () => {
-  //   it("returns the number value of a number card", () => {
-  //     expect(twoCard.value()).toEqual(2)
-  //   })
-
-  //   // we need to test an additional card because the logic of `value` evaluates differently for "face" cards
-  //   it("returns the correct number value for face cards (ace)", () => {
-  //     expect(aceCard.value()).toEqual(14)
-  //   })
-  // })
-})

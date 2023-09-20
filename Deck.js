@@ -19,10 +19,21 @@ class Deck {
     return _.shuffle(cards)
   }
 
-  // deal(){
-    
-  // }
-  
+  printSummary() {
+    return `There are ${this.cards.length} cards in the deck`
+  }
+
+  deal(){
+    const fourCards = []
+
+    // retrieve a card from the deck four times 
+    // put said cards into "fourCards"
+    for(let i = 1; i <= 4; i++){
+      fourCards.push(this.cards.pop())
+    }
+    // return "fourCards"
+    return fourCards
+  }
 
 }
 
