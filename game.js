@@ -1,36 +1,47 @@
-import Card from './Card.js'
+// import Card from './Card.js'
 import Deck from './Deck.js'
 import Hand from './Hand.js'
 
 // Guiding thoughts:
 // - keep console.logs in this file, so that our classes are testable 
-  // - a log is a different domain. Asserting that console.log works effectively in node is not important.
-  // Passing the correct message to the log is.
 
-console.log(`GAME START\n`)
 
-let deck = new Deck()
+// Log intro message
+console.log("GAME START")
 
-console.log(`There are ${deck.cards.length} cards in the deck.\n`)
+console.log("\n")
+// initialize deck of cards 
+// say how many cards are in the deck
+const deck = new Deck()
 
-const playerOneHand = new Hand(deck.deal())
-const playerTwoHand = new Hand(deck.deal())
+console.log(deck.printSummary())
+console.log("\n")
 
-console.log(`Player One was dealt: ${playerOneHand.printHand()}`)
-console.log(`Player Two was dealt: ${playerTwoHand.printHand()}`)
 
-const playerOneHandValue = playerOneHand.value()
-const playerTwoHandValue = playerTwoHand.value() 
+// create two hands of cards so that we can calculate their value and see what was dealt
+// each hand should be initialized with four cards
 
-console.log(`Player One's hand value is: ${playerOneHandValue}`)
-console.log(`Player Two's hand value is: ${playerTwoHandValue}`)
+const hand1 = new Hand(deck.deal(), "Player 1")
+const hand2 = new Hand(deck.deal(), "Player 2")
 
-let gameSummary
-if (playerOneHandValue > playerTwoHandValue){
-  gameSummary = "Player One wins the game"
-} else if (playerOneHandValue < playerTwoHandValue){
-  gameSummary = "Player Two wins the game"
-} else if (playerOneHandValue === playerTwoHandValue) {
-  gameSummary = "It's a tie!"
+// print out what was dealt
+console.log(hand1.logSummaryOfCards())
+console.log(hand2.logSummaryOfCards())
+console.log("\n")
+
+// calculate value
+// display values
+console.log(hand1.logValue())
+console.log(hand2.logValue())
+console.log("\n")
+
+// determine winner and generate output
+if (hand1.totalValue() > hand2.totalValue()){
+  console.log("Player 1 wins")
 }
-console.log(gameSummary)
+if (hand1.totalValue() < hand2.totalValue()){
+  console.log("Player 2 wins")
+}
+if (hand1.totalValue() === hand2.totalValue()){
+  console.log("It's a tie!")
+}

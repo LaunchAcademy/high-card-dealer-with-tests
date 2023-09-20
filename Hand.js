@@ -1,29 +1,31 @@
 class Hand {
-  constructor(cards) {
-    this.cards = cards
+  constructor(fourCards, playerString){
+    this.cards = fourCards
+    this.player = playerString
   }
 
-  printHand(){
-    let printString = ""
-    
-    this.cards.forEach((card) => {
-      printString += `${card.rank}${card.suit} `
+  logSummaryOfCards(){
+    let summaryString = `${this.player} was dealt: `
+
+    const cardStringsArray = this.cards.map((card) => {
+      return card.printSummary()
     })
 
-    return printString
+    return summaryString += cardStringsArray.join(", ")
+    // return summaryString + this.cards.map(card => `${card.rank}${card.suit}`).join(", ")
   }
 
-  value(){
-    let totalValue = 0 
-    
-    this.cards.forEach((card) => {
-      totalValue += card.value() 
+  totalValue(){
+    let totalValue = 0
+    this.cards.forEach(card => {
+      totalValue += card.value()
     })
-    
     return totalValue
   }
 
-
+  logValue(){
+    return `${this.player}'s hand value: ${this.totalValue()}`
+  }
 }
 
 export default Hand

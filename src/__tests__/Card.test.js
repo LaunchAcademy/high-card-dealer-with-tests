@@ -21,17 +21,19 @@ describe('Card', () => {
     })
   })
 
-  describe('#value', () => {
-    describe("when the card is numeric", () => {
-      it("returns the correct number value", () => {
-        expect(twoCard.value()).toEqual(2)
-      })
+  describe("#printSummary", () => {
+    it("returns a string summary with the rank and suit", () => {
+      expect(twoCard.printSummary()).toEqual("2♦")
+    })
+  })
+
+  describe("#value", () => {
+    it("returns the computed value for a number card", () => {
+      expect(twoCard.value()).toEqual(2)
     })
 
-    describe("when the card is a face card", () => {
-      it("returns the correct game value", () => {
-        expect(aceCard.value()).toEqual(14)
-      })
+    it("returns the computed value for a number card", () => {
+      expect(aceCard.value()).toEqual(14)
     })
   })
 })

@@ -10,13 +10,12 @@ describe('Hand', () => {
   let fourCard 
   let aceCard 
 
-
   beforeEach(() => {
     twoCard = new Card(2, '♦')
     threeCard = new Card(3, '♦')
     fourCard = new Card(4, '♦')
     aceCard = new Card("A", '♦')
-    handOne = new Hand([twoCard, threeCard, fourCard, aceCard])
+    handOne = new Hand([twoCard, threeCard, fourCard, aceCard], "Player 1")
   })
 
   describe('when a new Hand is created', () => {
@@ -25,23 +24,17 @@ describe('Hand', () => {
     })
   })
 
-  describe('#value', () => {
-    it("returns the number value of the cards in the hand", () => {
-      expect(handOne.value()).toEqual(23)
+  describe("#logSummaryOfCards", () => {
+    it("returns a stringy digest of each of the cards in the hand", () => {
+      expect(handOne.logSummaryOfCards()).toEqual("Player 1 was dealt: 2♦, 3♦, 4♦, A♦")
     })
   })
 
-  describe('#printHand', () => {
-    it("returns a formatted string containing details about each card in the hand", () => {
-      expect(handOne.printHand()).toEqual("2♦ 3♦ 4♦ A♦ ")
-    })
-  })
-  describe('#value', () => {
-    it("returns a formatted string containing details about each card in the hand", () => {
-      expect(handOne.printHand()).toEqual("2♦ 3♦ 4♦ A♦ ")
+  describe("#logValue", () => {
+    it("returns a string indicating the value of all of the cards in the hand", () => {
+      expect(handOne.logValue()).toEqual("Player 1's hand value: 23")
     })
   })
 
-
-
+  // .....
 })
