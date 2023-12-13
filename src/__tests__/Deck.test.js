@@ -17,7 +17,6 @@ describe('Deck', () => {
     it("returns 52 cards", () => {
       expect(firstDeck.buildDeck().length).toEqual(52)
     })
-
   })
   
   // printSummary

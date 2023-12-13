@@ -1,5 +1,5 @@
 {
-  "name": "object-oriented-marathon-js",
+  "name": "high-card-dealer-with-tests",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -14,5 +14,8 @@
     "@babel/preset-env": "^7.10.2",
     "babel-jest": "^26.0.1",
     "jest": "^26.0.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
