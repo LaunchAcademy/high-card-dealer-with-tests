@@ -19,9 +19,20 @@ class Deck {
     return _.shuffle(cards)
   }
 
-  // deal(){
-    
-  // }
-  
+  printCardSummary() {
+    return `There are ${this.cards.length} cards in the deck.\n`
+  }
 
+  deal(){
+    const fourCardsArray = []
+
+    for(let i = 1; i <= 4; i++) {
+      // const removedCard = this.cards.pop()
+      fourCardsArray.push(this.cards.pop())
+    }
+
+    return fourCardsArray
+  }
 }
+
+export default Deck
