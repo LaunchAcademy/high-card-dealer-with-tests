@@ -16,6 +16,7 @@ describe('Deck', () => {
   describe('#buildDeck', () => {
     it("there are 52 cards in the cards property after build deck is called", () => {
       expect(firstDeck.cards.length).toEqual(52)
+      firstDeck.cards = []
     })
 
     it("returns an array of Card objects", () => {
@@ -23,24 +24,41 @@ describe('Deck', () => {
     })
   })
 
-  describe("#printCardSummary", () => {
-    it("returns a string describing how many cards are in the deck", () => {
-      expect(firstDeck.printCardSummary()).toEqual(`There are ${firstDeck.cards.length} cards in the deck.\n`)
-    })
-  })
-  
-  describe("#deal", () => {
-    it("should return an array of four cards", () => {
-      const dealtCards = firstDeck.deal()
-      expect(dealtCards.length).toEqual(4)
+  describe("#displayCardCount", () => {
+    describe("when working with a standard 52 card deck", () => {
+      it("it returns a string saying there are 52 cards", () => {
+        expect(firstDeck.displayCardCount()).toEqual("There are 52 cards in the deck.")
+      })
     })
 
-    it("each element should be a card", () => {
+    describe("when a card is added to the initial standard deck", () => {
+      it("it returns a string saying there are 53 card", () => {
+        const addedCard = new Card("1", "♣")
+        firstDeck.cards.push(addedCard)
+        expect(firstDeck.displayCardCount()).toEqual("There are 53 cards in the deck.")
+      })
+    })
+  })
+
+  describe("#deal", () => {
+    it("remove four cards from the deck", () => {
+      firstDeck.deal()
+      expect(firstDeck.cards.length).toEqual(48)
+    })
+
+    it("returns an array", () => {
+      expect(firstDeck.deal()).toBeInstanceOf(Array)
+    })
+
+    it("returns an array containing four cards", () => {
+      expect(firstDeck.deal().length).toEqual(4)
+    })
+
+    it("returns an array of cards objects", () => {
       const dealtCards = firstDeck.deal()
-      // expect(dealtCards[0]).toBeInstanceOf(Card)
       dealtCards.forEach((card) => {
         expect(card).toBeInstanceOf(Card)
-      })  
+      })
     })
   })
 })

@@ -19,19 +19,18 @@ class Deck {
     return _.shuffle(cards)
   }
 
-  printCardSummary() {
-    return `There are ${this.cards.length} cards in the deck.\n`
+  displayCardCount() {
+    return `There are ${this.cards.length} cards in the deck.`
   }
 
   deal(){
-    const fourCardsArray = []
+    const fourCards = []
 
     for(let i = 1; i <= 4; i++) {
-      // const removedCard = this.cards.pop()
-      fourCardsArray.push(this.cards.pop())
+      fourCards.push(this.cards.pop())
     }
 
-    return fourCardsArray
+    return fourCards
   }
 }
 

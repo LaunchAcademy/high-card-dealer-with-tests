@@ -1,30 +1,33 @@
 class Hand {
-  constructor(arrayOfFourCards, playerName) {
-    this.cards = arrayOfFourCards
+  constructor(arrayOfCards, playerName) {
+    this.cards = arrayOfCards
     this.playerName = playerName
   }
 
-  printCardSummary() {
-    let summaryString = `${this.playerName} was dealt `
-
-    this.cards.forEach((card) => {
-      let cardString = `${card.printSummary()} `
-      summaryString += cardString
-    })
-
-    return summaryString
-  }
-
-  totalValue() {
-    let handTotal = 0
+  displayCards() {
+    let cardSummaryString = `${this.playerName} was dealt`
     this.cards.forEach(card => {
-      handTotal += card.value()
+      cardSummaryString += ` ${card.rank}${card.suit},`
     })
-    return handTotal
+
+    cardSummaryString = cardSummaryString.slice(0, -1); 
+    return cardSummaryString
   }
 
-  printTheValue() {
-    return `${this.playerName}'s hand value: ${this.totalValue()}`
+  displayCardTotal() {
+    //  computes the total value of the cards in the hand 
+    const cardTotal = this.cardTotal()
+
+    // spits out a string describing that total for the player
+     return `${this.playerName}'s hand value: ${cardTotal}`
+  }
+
+  cardTotal() {
+    let valueSum = 0
+    this.cards.forEach(card => {
+      valueSum += card.value()
+    })
+    return valueSum
   }
 }
 
